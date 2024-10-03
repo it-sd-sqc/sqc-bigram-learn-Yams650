@@ -60,5 +60,19 @@ class MainTest {
     );
   }
 
-  // TODO: Create your test(s) below. /////////////////////////////////////////
+
+
+    // TODO: Create your test(s) below. /////////////////////////////////////////
+    @Test
+    void createBigrams() {
+       Connection db = Main.createConnection();
+       assertDoesNotThrow(
+            () -> {
+                Main.createBigrams(db, "hello world hello world");
+                int countWord = Main.getWordCount(db);
+                System.out.println("There should be 2 words, there are " + countWord + " words.");
+            }
+       );
+    }
+
 }
